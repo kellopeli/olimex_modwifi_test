@@ -19,6 +19,8 @@
 
 ESP8266WiFiMulti WiFiMulti;
 
+WiFiClient  client;
+
 // Data wire is plugged into pin 0 on the olimex mowifi test
 #define ONE_WIRE_BUS 0
 
@@ -29,13 +31,15 @@ OneWire oneWire(ONE_WIRE_BUS);
 // Pass our oneWire reference to Dallas Temperature.
 DallasTemperature sensors(&oneWire);
 
+// ThingSpeak
+unsigned long myChannelNumber = MY_CHANNEL_NUMBER;
+const char * myWriteAPIKey = MY_WRITE_API_KEY;
+
 // Known ds18b20 sensor addresses
 uint8_t sensor[3][8] = {{ 0x28, 0x3d, 0xca, 0x04, 0x05, 0x00, 0x00, 0x1d },
                         { 0x28, 0xa2, 0xc0, 0x05, 0x05, 0x00, 0x00, 0xba },
                         // Sensor with encapsulation
                         { 0x28, 0xf3, 0x51, 0x22, 0x03, 0x00, 0x00, 0xfe }};
-
-WiFiClient  client;
 
 void setup() {
     Serial.begin(115200);
