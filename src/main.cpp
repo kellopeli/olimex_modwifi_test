@@ -35,7 +35,7 @@ DallasTemperature sensors(&oneWire);
 unsigned long myChannelNumber = MY_CHANNEL_NUMBER;
 const char * myWriteAPIKey = MY_WRITE_API_KEY;
 
-// Known ds18b20 sensor addresses
+// Known ds18b20 sensor addresses, add new sensors here
 uint8_t sensor[3][8] = {{ 0x28, 0x3d, 0xca, 0x04, 0x05, 0x00, 0x00, 0x1d },
                         { 0x28, 0xa2, 0xc0, 0x05, 0x05, 0x00, 0x00, 0xba },
                         // Sensor with encapsulation
